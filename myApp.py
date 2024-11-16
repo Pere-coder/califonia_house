@@ -130,5 +130,5 @@ st.write('Mean Absolute Error (MAE):', mae)
 st.write('Mean Squared Error (MSE):', mse)
 st.write('Root Mean Squared Error (RMSE):', rmse)
 st.write('R-squared (R²):', r2)
-if st.checkbox('View the model used to obtian these predictions'):
+if st.checkbox('View the model used to obtain these predictions'):
     st.write(model)
