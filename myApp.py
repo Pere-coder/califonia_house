@@ -118,3 +118,8 @@ This is a **real vs predicted** scatter plot for a simple linear regression mode
 """)
 
 st.pyplot(plt)
+x = st.slider('x')  # 👈 this is a widget
+st.write(x, 'squared is', x * x)
+
+if st.checkbox('View the model used to optian these predictions'):
+    st.write(model)
