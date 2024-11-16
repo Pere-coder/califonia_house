@@ -4,7 +4,8 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 import matplotlib.pyplot as plt
-
+from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+import numpy as np
 
 X_data = [[-1.6602e-01,  6.7167e-01, -1.9754e-01,  1.6349e-02,  1.6869e-01,
           -2.2855e-02, -6.4084e-01,  6.3246e-01],
@@ -111,6 +112,10 @@ plt.title('Real vs Predicted Values')
 plt.legend()
 
 
+mae = mean_absolute_error(y_original, pred)
+mse = mean_squared_error(y_original, pred)
+rmse = np.sqrt(mse)
+r2 = r2_score(y_original, pred)
 
 st.write("""
 # PYTORCH MODEL TRAINED TO PREDICT HOUSE PRICES.
@@ -118,8 +123,12 @@ This is a **real vs predicted** scatter plot for a simple linear regression mode
 """)
 
 st.pyplot(plt)
-x = st.slider('x')  # 👈 this is a widget
-st.write(x, 'squared is', x * x)
+# x = st.slider('x')  # 👈 this is a widget
+# st.write(x, 'squared is', x * x)
 
+st.write('Mean Absolute Error (MAE):', mae)
+st.write('Mean Squared Error (MSE):', mse)
+st.write('Root Mean Squared Error (RMSE):', rmse)
+st.write('R-squared (R²):', r2)
 if st.checkbox('View the model used to optian these predictions'):
     st.write(model)
